@@ -4,7 +4,9 @@ const socket = io()
 
 
 export function selecionarDocumento(nome){
-  socket.emit("selecionar_documento", nome)
+  socket.emit("selecionar_documento", nome, (texto) => {
+    atualizaTextoEditor(texto)
+  })
 }
 
 socket.on("texto_editor_clientes", atualizaTextoEditor)
